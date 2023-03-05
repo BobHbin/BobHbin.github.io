@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Linux学习记录</title>
+    <link href="/linux/"/>
+    <url>/linux/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CS61C(Spring 2023) lab and project</title>
+    <link href="/cs61c/"/>
+    <url>/cs61c/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Lab">Lab</h2><h3 id="Lab1-C">Lab1 C</h3><p>这个lab考查了C语言的基本使用，知道C语言的基本语法就没啥难度。</p><h4 id="Ex1">Ex1</h4><p>主要使用gcc编译c程序，并且按照要求修改代码</p><h4 id="Ex2">Ex2</h4><p>指针的简单使用。</p><h4 id="Ex3">Ex3</h4><p>对于值传递的考查，在c语言中，任何传递都是值传递，在函数中会复制一份和原来数值相同的变量。如果在某个函数中想要改变某个参数的值，需要使用指针，在C++中可以使用引用。</p><h4 id="Ex4">Ex4</h4><p>堆区的空间申请，在一个作用域里，数据几基本上都在栈上，是系统回收内存。如果需要使用堆区的空间，需要自己申请，并且需要自己回收。</p><h4 id="Ex5-Ex6">Ex5-Ex6</h4><p>数组与指针：数组是对一段连续空间的管理，而数组名是指向数组首地址的指针。可以通过指针访问数组的任何一个元素（注意不能越界，否则会出现错误），但是它无法自增或自减。</p><h4 id="Ex7">Ex7</h4><p>字符串和指针：c语言的字符串是由一系列字符组成的段。字符串的名字是指向首个字符地址的指针，可以通过该指针访问到字符串的任何元素，同样它也不能自增或者自减。同时，在字符串的末尾需要加上<code>\0</code>，表明已经到字符串的末尾了。</p><h4 id="Ex8">Ex8</h4><p>结构体：结构体变量用<code>.</code>来拿出里面的元素或者方法，结构体指针使用<code>-&gt;</code>，也可以先解引用再用<code>.</code>。</p><h4 id="Ex9">Ex9</h4><p>二级指针：指针的指针，二级指针指向的值是另一个值的地址，一定要先有一级指针才有二级指针，否则容易出现错误。</p><h4 id="Ex10">Ex10</h4><p>一个链表判断是否存在环，如果是C++可以使用hash表判断一个节点是否重复出现。C语言中没有高级的数据结构实现，这里考虑使用快慢指针，在一个环中，走得快的一定会和走得慢的在某个时间相遇，如果不成环，走得快的会先到终点，无法相遇。</p><h3 id="Lab2-C-Debugging">Lab2 C Debugging</h3><p>这个lab主要考查C语言的内存管理和gdb的使用。</p><h4 id="Ex1-2">Ex1</h4><p>找到源文件的警告，并且更正。</p><ul><li>第一处警告是在<code>new_course-&gt;name = *name;</code>处，这里的<code>name</code>是一个<code>char*</code>类型，<code>*name</code>则是<code>name</code>的首个字符，属于是<code>char</code>类型，而<code>Course</code>的<code>name</code>成员也是<code>char*</code>类型，类型不匹配。</li><li>第二处警告是在<code>return &amp;new_course;</code>处，这里的<code>new_course</code>是<code>Course*</code>类型，其地址为<code>Course**</code>类型，这里应该直接返回<code>new_course</code>。</li></ul><h4 id="Ex2-2">Ex2</h4><h3 id="Lab3-RISC-V-Venus">Lab3  RISC-V, Venus</h3><h3 id="Lab4-RISC-V-Calling-Convention">Lab4 RISC-V Calling Convention</h3><h2 id="Project">Project</h2><h3 id="Project1-snek">Project1: snek</h3><p>这个project用C语言实现一个简单的贪吃蛇游戏，考察C语言和GDB的掌握，涉及到结构体，指针，数组，内存分配，字符串等知识。</p><h4 id="准备工作">准备工作</h4><h5 id="背景知识">背景知识</h5><ol><li>在一个用<code>#</code>围起来的区域里有蛇，食物和墙。</li><li>每条蛇分为三个部分：头、身体、尾</li></ol><ul><li><code>WASD</code>表示头的朝向</li><li><code>^&lt;v&gt;</code>表示身体的朝向</li><li><code>wasd </code>表示尾的朝向</li></ul><ol start="3"><li><code>#</code>表示墙，蛇撞到就会判断为死亡，并且此时的头会被替换为<code>x</code>。</li><li><code>*</code>表示食物，当食物被蛇吃掉后，蛇的长度会加1，该区域中会随机出现一个新的食物。</li></ol><h5 id="The-game-state-t-struct">The <code>game_state_t</code> struct</h5><p>A snake game is stored in memory in a <code>game_state_t</code> struct. The struct contains the following fields:</p><ul><li><p><code>unsigned int num_rows</code>: The number of rows in the game board.</p></li><li><p><code>char** board</code>: The game board in memory. Each element of the <code>board</code> array is a <code>char*</code> pointer to a character array containing a row of the map.</p></li><li><p><code>unsigned int num_snakes</code>: The number of snakes on the board.</p></li><li><p><code>snake_t* snakes</code>: An array of <code>snake_t</code> structs.</p></li></ul><h5 id="The-snake-struct">The <code>snake</code> struct</h5><p>Each <code>snake</code> struct contains the following fields:</p><ul><li><p><code>unsigned int tail_row</code>: The row of the snake’s tail.</p></li><li><p><code>unsigned int tail_col</code>: The column of the snake’s tail.</p></li><li><p><code>unsigned int head_row</code>: The row of the snake’s head.</p></li><li><p><code>unsigned int head_col</code>: The column of the snake’s head.</p></li><li><p><code>bool live</code>: true if the snake is alive, and false if the snake is dead.</p></li></ul><h4 id="Task1-create-default-state">Task1: <code>create_default_state</code></h4><p>根据题目所给的图形初始化<code>game_state_t</code>和<code>snake</code>。根据图形可以得知行与列，蛇的数量，蛇的位置，食物的位置。根据已知的信息进行赋值即可。</p><p>需要注意的是，给字符串开空间的时候一定要多开一个空位给<code>\0</code>留位置。</p><h4 id="Task2-free-state">Task2: <code>free_state</code></h4><p>释放堆空间，记住一点：哪里用<code>malloc</code>申请了堆空间就一定要用<code>free</code>释放。同时在释放之前一定要记得判空，因为<code>free</code>如果传入了一个空指针会出现不可预知的错误。</p><h4 id="Task3-print-board">Task3: <code>print_board</code></h4><p>将<code>game_state_t</code>的图形写在某个文件里。这里需要使用<code>fprintf</code>函数，它和<code>printf</code>的唯一区别在于<code>fprintf</code>的第一个参数是指向需要写入的文件，而<code>printf</code>是直接输出到命令行的。只要知道了这个原理，这个题将和在命令行中打印图形的思路一模一样了。</p><h4 id="Task4-update-state">Task4: <code>update_state</code></h4><h5 id="Task4-1-Helper">Task4.1: Helper</h5><p>主要是完成一些辅助函数：</p><ul><li><code>bool is_tail(char c)</code>判断是否为尾，只需要判断<code>c</code>是否是尾的那几个字母即可</li><li><code>bool is_head(char c)</code>判断是否为头，同上</li><li><code>bool is_snake(char c)</code>是否为头，或者尾，或者为身体或者为<code>x</code></li><li><code>char body_to_tail(char c)</code>、<code>char head_to_body(char c)</code>、<code>unsigned int get_next_row(unsigned int cur_row, char c)</code>、<code>unsigned int get_next_col(unsigned int cur_col, char c)</code>根据提示翻译成代码即可</li></ul><h5 id="Task4-2-next-square">Task4.2: <code>next_square</code></h5><p>根据蛇的状态确定蛇即将移动到的单元格的字符。首先根绝蛇的头的横纵坐标和方向确定即将移动到的单元格的横纵坐标，从<code>state</code>中取出该坐标对应的字符即可。</p><h5 id="Task4-3-update-head">Task4.3: <code>update_head</code></h5><p>更新头。设蛇头即将移动的单元格为<code>x</code>，当前的头为<code>y</code>。根据<code>y</code>的坐标和字符可以算出<code>x</code>的坐标，然后将<code>y</code>的字符赋给<code>x</code>。同时<code>y</code>的字符需要更新成与<code>x</code>的字符同方向的对应的身体的字符即<code>^&lt;v&gt;</code>。最后需要更新该蛇的头的坐标。</p><h5 id="Task4-4-update-tail">Task4.4: <code>update_tail</code></h5><p>更新尾。设蛇尾即将移动的单元格为<code>x</code>，当前的尾为<code>y</code>。根据<code>y</code>的坐标和字符可以算出<code>x</code>的坐标，然后将<code>x</code>的字符更新为当前<code>x</code>的字符相对应的尾的字符即<code>wasd</code>。同时<code>y</code>的字符需要更新为空格。最后需要更新该蛇的尾的坐标。</p><h5 id="Task4-5-update-state">Task4.5: <code>update_state</code></h5><p>根据<code>state</code>更新每条蛇的状态，首先使用<code>next_square</code>函数计算出蛇即将移动到的单元格的字符，然后分类讨论，分为以下三种情况：</p><ul><li>如果字符为空，则蛇直接移动到该点，头尾都需要更新。</li><li>如果字符为<code>*</code>，蛇遇到了食物，吃掉，更新头，最后在区域中添加一个新的食物</li><li>如果字符为<code>#</code>，遇到墙，将当前头的字符设为<code>x</code>，改变蛇的生存状态。</li></ul><h4 id="Task5-load-board">Task5: <code>load_board</code></h4><p>根据文件加载<code>state</code>。这题我认为是这个project最难的一题（当然和我不熟悉C语言的文件操作有很大的关系）。同时这题不需要更新蛇的状态，难度减小了不少。</p><p>首先将文件读入到一个字符串中，接下来的任务就是将字符串写入到<code>state</code>的<code>board</code>中去。根据字符串换行的数量确定图形的行数，进而根据行数给<code>state</code>的<code>board</code>开空间。</p><p>然后我利用了一个双指针算法，一个指针指向当前行的头，另一个指针往后查询，如果查询到为<code>\n</code>，则完整的一行找到了，给当前行开空间（一定要多开一个，因为要在末尾添加<code>\0</code>），最后将字符串复制过去，更新第一个指针的位置。以此类推将整个区域加载出来。</p><h4 id="Task6-initialize-snake">Task6: <code>initialize_snake</code></h4><p>根据所给的<code>state</code>确定蛇的状态。</p><h5 id="Task6-1-find-head">Task6.1: <code>find_head</code></h5><p>根据所给蛇的状态和尾的坐标找到头的坐标。因为每一个坐标都有一个方向，直接根据该方向往前推，知道确定该节点的字符为头代表的字符即可（<code>WASD</code>）。</p><h5 id="Task6-2-initialize-snake">Task6.2: <code>initialize_snake</code></h5><p>先扫描整个区域，通过有多少<code>wasd</code>的存在确定蛇的数量进而确定所需要开设的空间。然后根据每条蛇的尾位置找到头，这样就确定了蛇的头尾坐标。最后根据头的字符判断蛇是否死亡即可。</p><h4 id="Task7-main">Task7: <code>main</code></h4><p>根据提示完成主函数。</p><p>到此整个project已经写完了，整体的感受是难度适中，考查的知识点非常全面，基本上涵盖平时在C语言中遇到的所有语法，体验很不错。</p><h3 id="Project2-CS61Classify">Project2: CS61Classify</h3><h2 id="参考">参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://cs61c.org/sp23/">https://cs61c.org/sp23/</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>cs61c</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
