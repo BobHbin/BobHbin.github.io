@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.hbinooo.com/img/cs61c.png">
 <meta property="article:published_time" content="2023-02-12T07:23:34.000Z">
-<meta property="article:modified_time" content="2023-03-05T02:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-06T07:48:00.000Z">
 <meta property="article:author" content="hbin">
 <meta property="article:tag" content="cs61c">
 <meta name="twitter:card" content="summary_large_image">
@@ -207,7 +207,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          5.1k 字
         
       </span>
     
@@ -218,7 +218,7 @@
         
         
         
-          31 分钟
+          43 分钟
         
       </span>
     
@@ -261,7 +261,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年3月5日 上午
+                    本文最后更新于：2023年3月6日 下午
                   
                 
               </p>
@@ -397,6 +397,38 @@
 <p>根据提示完成主函数。</p>
 <p>到此整个project已经写完了，整体的感受是难度适中，考查的知识点非常全面，基本上涵盖平时在C语言中遇到的所有语法，体验很不错。</p>
 <h3 id="Project2-CS61Classify">Project2: CS61Classify</h3>
+<p>Project2用RISC-V汇编写一个神经网络，用来识别MNIST手写数字，主要考查对于汇编的掌握和相关寄存器的使用。</p>
+<h4 id="Task1-Absolute-Value">Task1: Absolute Value</h4>
+<p>这个Task是个演示Task，主要教你如何在venus中如何调试汇编代码。绝对值函数的实现：首先需要将数据加载到寄存器中；比较其与0的大小，大于0则什么也不做直接返回，小于0则取反，并将绝对值再写入原地址中。</p>
+<h4 id="Task2-ReLU">Task2: ReLU</h4>
+<p>实现ReLU函数：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mi>x</mi></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">f(x) = \begin{cases}  
+x &amp; x \ge 0 \\
+0 &amp; x &lt; 0
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">x</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>函数会传入两个参数：一个数组的首地址<code>a0</code>和数组的长度<code>a1</code>，需要完成计算数组的所有元素的ReLU值并保存在原地（就地修改）。如果数组长度小于1则返回错误。</p>
+<p>基本思路如下：先将<code>a1 &lt; 1</code>直接返回。然后用一个变量<code>x</code>来保存<code>a1</code>，每来一次循环，比较<code>a0</code>的值与0的大小关系，如果<code>a0 &gt;= 0</code>，则不做任何变化，否则将0写入到对应的内存。最后执行<code>x = x - 1</code>，数组指针<code>a0 = a0 + 4</code>，直到<code>x == 0</code>时终止循环。</p>
+<h4 id="Task3-Argmax">Task3: Argmax</h4>
+<p>寻找数组中最大值对应的下标，如果存在多个最大值则返回第一个出现的下标。函数会传入两个参数：一个数组的首地址<code>a0</code>和数组的长度<code>a1</code>，需要返回一个参数<code>a0</code>为最大值对应的坐标。</p>
+<p>基本思路如下：先判异常。初始化变量<code>x = 0</code>表示当前访问的数组下标，<code>y = a0[0]</code>表示当前的最大值，<code>z = 0</code>表示当前最大值的下标。每来一次循环，将<code>a0</code>的值与<code>y</code>的值进行比较，如果<code>a0</code>的值小于等于<code>y</code>的值，则不做任何处理；否则将<code>y</code>和<code>z</code>进行更新。最后执行<code>x = x + 1</code>，数组指针<code>a0 = a0 + 4</code>，直到<code>x == a1</code>时终止循环。</p>
+<h4 id="Task4-Dot-Product">Task4: Dot Product</h4>
+<p>计算两个向量的内积。函数会传入5个参数：第一个数组的首地址<code>a0</code>、对应的步长<code>a3</code>；第二个数组的首地址<code>a1</code>、 对应的步长<code>a4</code>，每个数组需要用的元素个数<code>a2</code>。需要返回一个参数<code>a0</code>为两个向量的内积。</p>
+<p>基本思路如下：先判异常。初始化变量<code>x = 0</code>表示当前访问的数组下标，<code>y = 0</code>表示当前的和。每来一次循环，将<code>a0</code>和<code>a1</code>的值相乘的结果加到<code>y</code>上。然后执行<code>a0 = a0 + 4 * a3</code>、<code>a1 = a1 + 4 * a4</code>，直到<code>x == a2</code>时终止循环。</p>
+<h4 id="Task5-Matrix-Multiplication">Task5: Matrix Multiplication</h4>
+<p>计算矩阵相乘的结果。函数会传入7个参数：第一个数组的首地址<code>a0</code>、行数<code>a1</code>、列数<code>a2</code>；第一个数组的首地址<code>a3</code>、行数<code>a4</code>、列数<code>a5</code>；存储答案的数组的首地址<code>a6</code>。</p>
+<p>基本思路如下：先判异常。这里计算内积需要调用Task4的轮子。初始化变量<code>x = 0</code>表示第一个矩阵的行数，<code>y = 0</code>表示第二个矩阵的列数。根据Task4的要求将参数赋值：</p>
+<ul>
+<li><code>a0</code>应该为第一个矩阵的每行首个元素的地址</li>
+<li><code>a1</code>为第二个矩阵的每列首个元素的地址</li>
+<li><code>a2</code>为元素格式即第一个矩阵的列数或者第二个矩阵的行数</li>
+<li><code>a3</code>为第一个向量的步长即1</li>
+<li><code>a4</code>为第二个向量的步长即第二个矩阵的列数</li>
+</ul>
+<p>调用<code>dot</code>，将算出来的结果存放在<code>a6</code>，将<code>a6</code>往后移动一位，再执行<code>y = y + 1</code>，直到<code>y == a5</code>为止结束内层循环，然后需要将指向第一个矩阵的指针移到下一行的开头，最后执行<code>x = x + 1</code>，直到<code>x == a1</code>结束外层循环。</p>
+<p><strong>注意</strong>：因为在函数中调用了<code>dot</code>，<code>ra</code>会发生变化，所以需要先保存<code>ra</code>的值。</p>
+<h4 id="Task6-Testing">Task6: Testing</h4>
+<p>编写一些测试函数。根据每个函数的输入和py文件上的提示直接写即可。</p>
 <h2 id="参考">参考</h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://cs61c.org/sp23/">https://cs61c.org/sp23/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
