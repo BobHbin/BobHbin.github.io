@@ -16,24 +16,24 @@
   <meta name="author" content="hbin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Linux及相关工具(git, shell等)使用">
+    <meta name="description" content="MIT6.1810操作系统lab记录：我真的懂C语言和RISC-V吗">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux学习记录">
-<meta property="og:url" content="https://blog.hbinooo.com/linux/index.html">
+<meta property="og:title" content="MIT6.1810(Fall 2022) lab">
+<meta property="og:url" content="https://blog.hbinooo.com/mitOS/index.html">
 <meta property="og:site_name" content="黄彬的博客">
-<meta property="og:description" content="Linux及相关工具(git, shell等)使用">
+<meta property="og:description" content="MIT6.1810操作系统lab记录：我真的懂C语言和RISC-V吗">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.hbinooo.com/img/linux.svg">
-<meta property="article:published_time" content="2023-03-01T11:01:22.000Z">
-<meta property="article:modified_time" content="2023-03-13T05:17:01.070Z">
+<meta property="og:image" content="https://blog.hbinooo.com/img/mitOS.png">
+<meta property="article:published_time" content="2023-03-08T01:20:00.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:08:06.910Z">
 <meta property="article:author" content="hbin">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="Operating Systems">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.hbinooo.com/img/linux.svg">
+<meta name="twitter:image" content="https://blog.hbinooo.com/img/mitOS.png">
   
   
   
-  <title>Linux学习记录 - 黄彬的博客</title>
+  <title>MIT6.1810(Fall 2022) lab - 黄彬的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -184,7 +184,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux学习记录"></span>
+            <span id="subtitle" data-typed-text="MIT6.1810(Fall 2022) lab"></span>
           
         </div>
 
@@ -195,8 +195,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-01 19:01" pubdate>
-          2023年3月1日 晚上
+        <time datetime="2023-03-08 09:20" pubdate>
+          2023年3月8日 上午
         </time>
       </span>
     
@@ -207,7 +207,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5k 字
+          0 字
         
       </span>
     
@@ -218,7 +218,7 @@
         
         
         
-          42 分钟
+          1 分钟
         
       </span>
     
@@ -256,12 +256,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux学习记录</h1>
+            <h1 style="display: none">MIT6.1810(Fall 2022) lab</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年3月13日 下午
+                    本文最后更新于：2023年3月8日 上午
                   
                 
               </p>
@@ -269,132 +269,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="git使用">git使用</h2>
-<p>git是一个开源的分布式版本控制系统。在平时的学习中，我会使用git来进行代码的版本控制，这一部分主要讲述常用的git命令。</p>
-<h3 id="基本概念">基本概念</h3>
-<ul>
-<li>工作区：仓库的目录。工作区是独立于各个分支的，所有的分支都在同一个工作区。</li>
-<li>暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于各个分支的，所有的分支都使用同一个暂存区。</li>
-<li>版本库：存放所有已经提交到本地仓库的代码版本</li>
-<li><code>HEAD</code>: 指向当前版本的头指针。</li>
-</ul>
-<p>每形成一个新的版本，会在<code>HEAD</code>后面加上一个新的节点，将暂存区的内容存放在新的节点（但是暂存区不会清空），并将<code>HEAD</code>后移一位。这样就形成了一个树状结构，每一个点代表一个版本，由节点组成的整体叫做版本结构。</p>
-<h3 id="常用命令">常用命令</h3>
-<h4 id="config">config</h4>
-<p>通常用于设置邮箱和用户名。有三个级别：<code>global</code>, <code>local</code>, <code>system</code>，默认不指定是<code>local</code>级别。前两个比较常用，<code>local</code>对应的是项目，可以在某个项目中设定特定的用户名和邮箱：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --local user.name &lt;name&gt;</span><br><span class="line">git config --local user.email &lt;email&gt;</span><br></pre></td></tr></table></figure>
-<p><code>global</code>对应的是用户全局，这样在这个用户登陆这台电脑时，默认的邮箱和用户名就是用<code>global</code>设定的用户名和邮箱。</p>
-<p>同时，上述的代码在不加入最后的参数时，可以查看当前的用户名和邮箱：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --local user.name</span><br><span class="line">git config --local user.email</span><br></pre></td></tr></table></figure>
-<h4 id="init">init</h4>
-<p><code>git init</code> 在当前文件目录下创建git仓库，在本地生成一个.git隐藏文件夹。<code>git init &lt;path&gt;</code> 在特定目录下创建git仓库。</p>
-<h4 id="add">add</h4>
-<p>用来从工作区向暂存区添加变更。</p>
-<p><code>git add .</code> 将工作区的所有文件都加入暂存区；<code>git add x</code> 将x文件添加到暂存区；<code>git add -u</code> 提交被修改和被删除文件，不包括新文件；<code>git add -A</code> 提交所有变化。</p>
-<h4 id="status">status</h4>
-<p><code>git status</code>查看仓库在暂存区和工作区的状态。</p>
-<h4 id="commit">commit</h4>
-<p>将暂存区的内容提交到当前分支。</p>
-<p><code>git commit -m &quot;message&quot;</code> 提交一个描述为message的commit。</p>
-<p><code>git commit -am &quot;message&quot;</code> 先提交所有变化到暂存区，然后提交一个描述为message的commit。注意：执行这条命令之前需要保证工作区的文件都在暂存区中。例如：新建一个文件，需要先add，再执行上述命令，不然会报错。</p>
-<p><code>git commit --amend</code> 不增加一个新的commit的情况下将新修改的代码追加到前一次的commit中，并且会弹出一个编辑框，修改message信息。</p>
-<p><code>git commit --amend --no-edit</code> 不增加一个新的commit的情况下将新修改的代码追加到前一次的commit中，并且不修改message信息。</p>
-<h4 id="diff">diff</h4>
-<p>比较文件的不同。注意以下的<code>&lt;file&gt;</code>都是文件，如果不加文件，默认比较整个工作区的文件。</p>
-<p><code>git diff &lt;file&gt;</code> 查看文件在当前工作区相对于暂存区修改了哪些内容。</p>
-<p><code>git diff --cached &lt;file&gt;</code> 查看文件在暂存区相对于最后一次commit修改了哪些内容。</p>
-<p><code>git diff HEAD &lt;file&gt;</code> 查看文件在当前工作区相对于最后一次commit修改了哪些内容。</p>
-<p><code>git diff &lt;commitId&gt;...&lt;commitId&gt; &lt;file&gt;</code> 查看文件在两次commit之间的修改。</p>
-<p><code>git diff &lt;branch&gt;...&lt;branch&gt; &lt;file&gt;</code> 查看文件在两个分支上最后一次commit的不同。</p>
-<h4 id="restore">restore</h4>
-<p>撤销暂存区修改。</p>
-<p><code>git restore &lt;file&gt;</code> 将文件尚未加入暂存区的修改全部撤销，会进行文件的修改。</p>
-<p><code>git restore --staged &lt;file&gt;</code> 将暂存区回滚到上一个版本，文件不修改。</p>
-<h4 id="log">log</h4>
-<p>回顾提交历史。</p>
-<p><code>git log</code> 查看从根节点到<code>HEAD</code>的整个路径。</p>
-<p><code>git log --pretty=oneline</code> 将所有版本显示在一行。</p>
-<p><code>git reflog</code> 查看<code>HEAD</code>指针的移动历史（包括被回滚的版本）。</p>
-<p><code>git log --grep &lt;key&gt;</code> 查找包含指定字符串的commit。</p>
-<p><code>git log -S &lt;key&gt;</code> 查找包含指定字符串的commit，这里指的文件里的key。</p>
-<h4 id="reset">reset</h4>
-<p>回滚代码。有三个常用参数：<code>--soft</code>，<code>--hard</code>,，<code>--mixed</code>，默认情况是<code>--mixed</code>。</p>
-<p><code>git reset --soft [commitId]/&lt;branch&gt;</code> 将<code>HEAD</code>指针指向commitId，但是工作区和暂存区内容都不改变。</p>
-<p><code>git reset (--mixed) &lt;commitId&gt;/&lt;branch&gt;</code> 将<code>HEAD</code>指针指向commitId，暂存区内容变为<code>HEAD</code>指针指向的内容，工作区内容不改变。</p>
-<p><code>git reset --hard &lt;commitId&gt;/&lt;branch&gt;</code> 将<code>HEAD</code>指针指向commitId，工作区和暂存区内容都变为<code>HEAD</code>指针指向的内容。</p>
-<p><code>git reset (--mixed) HEAD</code> 将暂存区的所有改动撤销到工作区。</p>
-<p><code>git reset --hard HEAD^</code> 或<code>git reset --hard HEAD~</code> 将代码库回滚到上一个版本。</p>
-<p><code>git reset --hard HEAD^^</code> 往上回滚两次，以此类推。</p>
-<p><code>git reset --hard HEAD~100</code> 往上回滚100个版本。</p>
-<h4 id="rm">rm</h4>
-<p>删除文件。</p>
-<p><code>git rm &lt;file&gt;</code> 删除工作区文件，并且将此次删除加入到暂存区。</p>
-<p><code>git rm --cached &lt;file&gt;</code> 用于删除暂存区文件，并将此次删除放入暂存区，但会保留工作区的文件。将文件从仓库索引目录中删掉，文件还在，但是不归git管了。同时<code>git rm --cached -r .</code>指对所有文件进行操作。</p>
-<h4 id="remote">remote</h4>
-<p>管理远程连接。</p>
-<p><code>git remote add &lt;name&gt; &lt;url&gt;</code> 添加远程仓库关联。</p>
-<p><code>git remote remove &lt;name&gt;</code> 删除远程仓库关联。</p>
-<p><code>git remote rename &lt;old_name&gt; &lt;new_name&gt;</code> 更名远程仓库关联。</p>
-<p><code>git remote show &lt;name&gt;</code> 显示某个远程仓库的信息。</p>
-<h4 id="push">push</h4>
-<p>将本地版本库推送到远程分支。</p>
-<p><code>git push -u &lt;remote&gt; &lt;branch&gt;</code> 将当前分支推送到远程仓库并绑定（往往是在第一次push时使用）。</p>
-<p><code>git push &lt;remote&gt; &lt;branch&gt;</code> 将当前分支推送到远程仓库。</p>
-<p><code>git push -d &lt;remote&gt; &lt;branch&gt;</code>或者<code>git push &lt;remote&gt; :&lt;branch&gt;</code> 删除远程仓库的分支。</p>
-<p><code>git push --set-upstream &lt;remote&gt; &lt;branch&gt;</code> 设置本地分支对应远程仓库的branch分支。</p>
-<h4 id="clone">clone</h4>
-<p>克隆远程仓库代码。注意：clone下来的文件夹与push上去在某些东西存在差异如<code>HEAD</code>指针的来回移动就看不到，如<code>remote</code>的name将恢复默认的<code>origin</code>等</p>
-<p><code>git clone &lt;url&gt;</code> 克隆，文件夹名为远程仓库的名字。</p>
-<p><code>git clone &lt;url&gt; &lt;dir_name&gt;</code> 取一个自己想要的名字。</p>
-<h4 id="branch">branch</h4>
-<p>分支操作。</p>
-<p><code>git branch</code> 查看本地所有分支。</p>
-<p><code>git branch -a</code> 查看所有分支列表，包括本地和远程。</p>
-<p><code>git branch &lt;name&gt;</code> 新建分支。</p>
-<p><code>git branch &lt;name&gt; &lt;commitId&gt;</code> 在指定commit上创建分支。</p>
-<p><code>git branch -d &lt;name&gt;</code> 删除本地分支，如果在分支中有一些未merge的提交则会失败。</p>
-<p><code>git branch -m &lt;oldName&gt; &lt;newName&gt;</code> 重命名分支。</p>
-<p><code>git branch --set-upstream-to=&lt;remote&gt;/&lt;remote_branch&gt; &lt;local_branch&gt;</code>：将远程的分支与本地的分支对应。</p>
-<h4 id="checkout">checkout</h4>
-<p>切换分支。</p>
-<p><code>git checkout &lt;branch&gt;</code> 切换到已有的分支。</p>
-<p><code>git checkout -b &lt;branch&gt;</code> 新建分支并且切换到该分支。</p>
-<p><code>git checkout -b &lt;branch&gt; &lt;commitId&gt;</code> 在指定commit上新建分支并切换到该分支。</p>
-<p><code>git checkout -t &lt;remote&gt;/&lt;branch&gt;</code> 将远程的分支拉取到本地。</p>
-<p><code>git checkout .</code> 放弃工作区所有文件的修改。</p>
-<h4 id="merge">merge</h4>
-<p>将两个或以上的开发版本进行合并。</p>
-<p><code>git merge &lt;branch&gt;</code> 合并branch分支到当前分支。</p>
-<p><code>git merge --abort</code> 退出merge过程，常在处理冲突时使用。</p>
-<p><code>git merge --continue</code> 继续 merge 过程，常在处理完冲突时使用。</p>
-<p><code>git merge --squash &lt;branch&gt;</code> 合并分支上的多个commit合并成一个commit叠加在当前分支上即当前分支不会增加新的commit。</p>
-<h4 id="rebase">rebase</h4>
-<p>变更某个分支。</p>
-<p><code>git rebase &lt;branch&gt;</code> 变更某个分支。</p>
-<p><code>git rebase --abort</code> 退出rebase过程，常在处理冲突出错时使用。</p>
-<p><code>git rebase --continue</code> 继续rebase过程，常在处理完冲突时使用。</p>
-<p>使用：两个分支master和dev不一致需要将dev上的修改合并到master上</p>
-<ul>
-<li>先切换到dev分支，执行<code>git rebase master</code>，这一步将dev的commit复制，内容进行合并，可能会处理冲突。不会产生新的节点</li>
-<li>然后切换到master分支，执行<code>git merge dev</code>，一定不会处理冲突，且合并之后直接将HEAD指针移到<code>dev</code>的头即可，不会产生新的节点，dev和master在同一个位置</li>
-</ul>
-<p>举个例子说明<code>rebase</code>和<code>merge</code>的区别：</p>
-<ul>
-<li>假如两个分支master和dev都进行了修改，并且commit了，现在要将dev上的修改合并到master上，可以在master分支直接使用<code>git merge dev</code>，但是<code>merge</code>合并会产生一个新的节点，dev和master不在同一个位置。</li>
-<li>而<code>rebase</code>合并不会产生一个新的节点且dev和master在同一个位置，这样方便下次分别开发。</li>
-</ul>
-<h4 id="pull">pull</h4>
-<p>从远程获取代码并且合并本地的版本。</p>
-<p><code>git pull &lt;remote&gt; &lt;remote_branch&gt;:&lt;local_branch&gt;</code> 使用merge方式将远程remote的remote_branch分支与本地的local_branch进行合并。也可以直接使用<code>git pull</code>即将远程的默认分支（一般是main）与本地所在分支进行合并。</p>
-<p><code>git pull --rebase &lt;remote&gt; &lt;remote_branch&gt;:&lt;local_branch&gt;</code> 使用rebase方式将远程remote的remote_branch分支与本地的local_branch进行合并。</p>
-<h4 id="stash">stash</h4>
-<p>保存和恢复工作进度。</p>
-<p><code>git stash save message</code> 将工作区和暂存区中尚未提交的修改存入栈中，并且工作区和暂存区的内容将恢复到上次commit的内容。message是此次进度保存的说明，可以不加<code>save message</code>，此时的默认message是上次commit的message。</p>
-<p><code>git stash show -p</code> 显示此次工作进度做了哪些具体的代码改动。</p>
-<p><code>git stash pop</code> 恢复工作到工作区，并且删除栈顶元素。</p>
-<p><code>git stash drop</code> 删除栈顶存储的修改。</p>
-<p><code>git stash list</code> 查看栈中所有的元素。</p>
-
+                
                 
               </div>
             
@@ -406,7 +281,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/linux/">#linux</a>
+        <a href="/tags/Operating-Systems/">#Operating Systems</a>
       
     </div>
   
@@ -418,8 +293,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux学习记录</div>
-      <div>https://blog.hbinooo.com/linux/</div>
+      <div>MIT6.1810(Fall 2022) lab</div>
+      <div>https://blog.hbinooo.com/mitOS/</div>
     </div>
     <div class="license-meta">
       
@@ -431,7 +306,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月1日</div>
+          <div>2023年3月8日</div>
         </div>
       
       
@@ -463,18 +338,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/mitOS/" title="MIT6.1810(Fall 2022) lab">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MIT6.1810(Fall 2022) lab</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/cs61c/" title="CS61C(Spring 2023) lab and project">
-                        <span class="hidden-mobile">CS61C(Spring 2023) lab and project</span>
+                      <a href="/linux/" title="Linux学习记录">
+                        <span class="hidden-mobile">Linux学习记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
