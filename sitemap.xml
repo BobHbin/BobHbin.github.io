@@ -4,16 +4,25 @@
   <url>
     <loc>https://blog.hbinooo.com/linux/</loc>
     
-    <lastmod>2023-03-13</lastmod>
+    <lastmod>2023-03-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.hbinooo.com/mitOS/</loc>
+    <loc>https://blog.hbinooo.com/mitos/</loc>
     
-    <lastmod>2023-03-08</lastmod>
+    <lastmod>2023-03-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hbinooo.com/cmudb/</loc>
+    
+    <lastmod>2023-03-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,29 +49,36 @@
 
   <url>
     <loc>https://blog.hbinooo.com/</loc>
-    <lastmod>2023-03-13</lastmod>
+    <lastmod>2023-03-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://blog.hbinooo.com/tags/cs61c/</loc>
-    <lastmod>2023-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hbinooo.com/tags/linux/</loc>
-    <lastmod>2023-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.hbinooo.com/tags/Operating-Systems/</loc>
-    <lastmod>2023-03-13</lastmod>
+    <lastmod>2023-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hbinooo.com/tags/Database/</loc>
+    <lastmod>2023-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hbinooo.com/tags/Computer-Structrue/</loc>
+    <lastmod>2023-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hbinooo.com/tags/Linux/</loc>
+    <lastmod>2023-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

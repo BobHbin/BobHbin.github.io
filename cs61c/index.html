@@ -27,7 +27,7 @@
 <meta property="article:published_time" content="2023-02-12T07:23:34.000Z">
 <meta property="article:modified_time" content="2023-03-06T07:48:00.000Z">
 <meta property="article:author" content="hbin">
-<meta property="article:tag" content="cs61c">
+<meta property="article:tag" content="Computer Structrue">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.hbinooo.com/img/cs61c.png">
   
@@ -207,7 +207,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.1k 字
+          5.2k 字
         
       </span>
     
@@ -218,7 +218,7 @@
         
         
         
-          43 分钟
+          44 分钟
         
       </span>
     
@@ -322,37 +322,19 @@
 <h5 id="The-game-state-t-struct">The <code>game_state_t</code> struct</h5>
 <p>A snake game is stored in memory in a <code>game_state_t</code> struct. The struct contains the following fields:</p>
 <ul>
-<li>
-<p><code>unsigned int num_rows</code>: The number of rows in the game board.</p>
-</li>
-<li>
-<p><code>char** board</code>: The game board in memory. Each element of the <code>board</code> array is a <code>char*</code> pointer to a character array containing a row of the map.</p>
-</li>
-<li>
-<p><code>unsigned int num_snakes</code>: The number of snakes on the board.</p>
-</li>
-<li>
-<p><code>snake_t* snakes</code>: An array of <code>snake_t</code> structs.</p>
-</li>
+<li><code>unsigned int num_rows</code>: The number of rows in the game board.</li>
+<li><code>char** board</code>: The game board in memory. Each element of the <code>board</code> array is a <code>char*</code> pointer to a character array containing a row of the map.</li>
+<li><code>unsigned int num_snakes</code>: The number of snakes on the board.</li>
+<li><code>snake_t* snakes</code>: An array of <code>snake_t</code> structs.</li>
 </ul>
 <h5 id="The-snake-struct">The <code>snake</code> struct</h5>
 <p>Each <code>snake</code> struct contains the following fields:</p>
 <ul>
-<li>
-<p><code>unsigned int tail_row</code>: The row of the snake’s tail.</p>
-</li>
-<li>
-<p><code>unsigned int tail_col</code>: The column of the snake’s tail.</p>
-</li>
-<li>
-<p><code>unsigned int head_row</code>: The row of the snake’s head.</p>
-</li>
-<li>
-<p><code>unsigned int head_col</code>: The column of the snake’s head.</p>
-</li>
-<li>
-<p><code>bool live</code>: true if the snake is alive, and false if the snake is dead.</p>
-</li>
+<li><code>unsigned int tail_row</code>: The row of the snake’s tail.</li>
+<li><code>unsigned int tail_col</code>: The column of the snake’s tail.</li>
+<li><code>unsigned int head_row</code>: The row of the snake’s head.</li>
+<li><code>unsigned int head_col</code>: The column of the snake’s head.</li>
+<li><code>bool live</code>: true if the snake is alive, and false if the snake is dead.</li>
 </ul>
 <h4 id="Task1-create-default-state">Task1: <code>create_default_state</code></h4>
 <p>根据题目所给的图形初始化<code>game_state_t</code>和<code>snake</code>。根据图形可以得知行与列，蛇的数量，蛇的位置，食物的位置。根据已知的信息进行赋值即可。</p>
@@ -429,6 +411,8 @@ x &amp; x \ge 0 \\
 <p><strong>注意</strong>：因为在函数中调用了<code>dot</code>，<code>ra</code>会发生变化，所以需要先保存<code>ra</code>的值。</p>
 <h4 id="Task6-Testing">Task6: Testing</h4>
 <p>编写一些测试函数。根据每个函数的输入和py文件上的提示直接写即可。</p>
+<h3 id="Project3-CS61CPU">Project3: CS61CPU</h3>
+<p>这个Project会搭建一个二级流水线的CPU，并在上面运行RISC-V汇编代码。主要考查的内容有组合逻辑电路，Flip-Flop，RISC-V指令的表示。</p>
 <h2 id="参考">参考</h2>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://cs61c.org/sp23/">https://cs61c.org/sp23/</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
@@ -443,7 +427,7 @@ x &amp; x \ge 0 \\
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/cs61c/">#cs61c</a>
+        <a href="/tags/Computer-Structrue/">#Computer Structrue</a>
       
     </div>
   
