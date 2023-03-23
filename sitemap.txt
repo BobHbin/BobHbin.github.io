@@ -1,3 +1,4 @@
+https://blog.hbinooo.com/algorithm/
 https://blog.hbinooo.com/linux/
 https://blog.hbinooo.com/mitos/
 https://blog.hbinooo.com/cmudb/
@@ -8,3 +9,4 @@ https://blog.hbinooo.com/tags/Operating-Systems/
 https://blog.hbinooo.com/tags/Database/
 https://blog.hbinooo.com/tags/Computer-Structrue/
 https://blog.hbinooo.com/tags/Linux/
+https://blog.hbinooo.com/tags/Algorithm/
